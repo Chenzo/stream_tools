@@ -54,7 +54,7 @@ class App extends Component{
           {this.state.isToggleOn ? 'Mic On' : 'Mic Off'}
         </button>
         {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
-        {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''}
+        {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}
       </div>
     );
   }

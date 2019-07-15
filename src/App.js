@@ -2,7 +2,9 @@
 import React, { Component} from "react";
 import {hot} from "react-hot-loader";
 import "./App.scss";
-import MicWave from "./components/MicWave.js";
+import MicCircle from "./components/MicCircle";
+import AudioAnalyser from "./components/AudioAnalyser"
+import Wait from "./components/Wait";
 
 class App extends Component{
   constructor(props) {
@@ -10,10 +12,25 @@ class App extends Component{
     this.state = {
       Mic: {},
       isToggleOn: false,
-      Volume: 0
+      Volume: 0,
+      audio: null
     };
 
     this.handleClick = this.handleClick.bind(this);
+  }
+
+
+  async getMicrophone() {
+    const audio = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: false
+    });
+    this.setState({ audio });
+  }
+
+  stopMicrophone() {
+    this.state.audio.getTracks().forEach(track => track.stop());
+    this.setState({ audio: null });
   }
 
   handleClick() {
@@ -21,9 +38,11 @@ class App extends Component{
       isToggleOn: !state.isToggleOn
     }));
 
-    this.setState ({
-      Mic: new this.Microphone(this)
-    });
+    if (this.state.audio) {
+      this.stopMicrophone();
+    } else {
+      this.getMicrophone();
+    } 
   }
 
 
@@ -59,6 +78,11 @@ class App extends Component{
       }
     }
 
+    function map(value, min1, max1, min2, max2) {
+      var returnvalue = ((value-min1) / (max1 - min1) * (max2-min2)) + min2;
+      return returnvalue;
+     };
+
     function startMic (context) {
       navigator.getUserMedia({ audio: true }, processSound, error);
       function processSound (stream) {
@@ -82,6 +106,7 @@ class App extends Component{
           self.rObj.setState ({
             Volume: self.volume
           });
+
         };
         var input = context.createMediaStreamSource(stream);
         input.connect(analyser);
@@ -102,6 +127,21 @@ class App extends Component{
       rms /= spectrum.length;
       rms = Math.sqrt(rms);
       return rms;
+    }
+
+    this.mapSound = function(_me, _total, _min, _max){
+      if (self.spectrum.length > 0) {
+        // map to defaults if no values given
+        var min = _min || 0;
+        var max = _max || 100;
+        //actual new freq
+        var new_freq = Math.floor(_me * self.spectrum.length /_total);
+        // map the volumes to a useful number
+        return map(self.spectrum[new_freq], 0, self.peak_volume, min, max);
+      } else {
+        return 0;
+      }
+          
     }
 
 
@@ -125,9 +165,11 @@ class App extends Component{
     return(
       <div className="App">
         <button onClick={this.handleClick}>
-          {this.state.isToggleOn ? 'ON' : 'OFF'}
+          {this.state.isToggleOn ? 'Mic On' : 'Mic Off'}
         </button>
-        <MicWave mic={this.state.Mic}/>
+        <MicCircle mic={this.state.Mic}/>
+        <Wait />
+        {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''}
       </div>
     );
   }

@@ -8,8 +8,7 @@ class AudioAnalyser extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            audioData: new Uint8Array(0),
-            test: "here"
+            audioData: new Uint8Array(0)
          };
         this.tick = this.tick.bind(this);
     }

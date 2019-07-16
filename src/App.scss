@@ -1,9 +1,54 @@
+@import 'scss/_variables.scss';
+
 
 .App {
   margin: 2rem;
   font-family: Arial, Helvetica, sans-serif;
 
-  .sass_test {
-    color: purple;
+
+
+
+  .avContainer {
+    position: relative;
+    background: #777777;
+    width: 500px;
+    height: 500px;
+
+    .audioContainer{
+      position: absolute; 
+      top: 0px;
+      left: 0px;
+      z-index: 10;
+    }
+
+    .circleContainer {
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+    }
+
+    .videoContainer {
+     
+      z-index: 5;
+      width: 200px;
+      height: 200px;
+      border: 2px solid $sea_green_1;
+    }
+
+    .imageContainer {
+      width: 200px;
+      height: 200px;
+      z-index: 4;
+      img.mrChenzo {
+        width: 110%
+      }
+    }
   }
 }

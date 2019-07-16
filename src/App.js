@@ -3,8 +3,9 @@ import React, { Component} from "react";
 import {hot} from "react-hot-loader";
 import "./App.scss";
 import MicCircle from "./components/MicCircle";
-import AudioAnalyser from "./components/AudioAnalyser"
-import VideoOutput from "./components/VideoOutput"
+import AudioAnalyser from "./components/AudioAnalyser";
+import VideoOutput from "./components/VideoOutput";
+import mrChenzo from "./images/comodore_chenzo.jpg";
 
 
 class App extends Component{
@@ -80,13 +81,19 @@ class App extends Component{
             {this.state.video ? 'Vid On' : 'Vid Off'}
           </button>
         </div>
-        <div>
-        {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
-        {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}
+
+        <div className="avContainer">
+          <div className="audioContainer">
+          {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
+          {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}
+          </div>
+          <div className="videoContainer circleContainer">
+            {this.state.video ? <VideoOutput video={this.state.video} /> : ''}
+          </div>
+          <div className="imageContainer circleContainer">
+            <img src={mrChenzo} alt="Mr Chenzo" className="mrChenzo"/>
+          </div>
         </div>
-        
-        {this.state.video ? <VideoOutput video={this.state.video} /> : ''}
-        
       </div>
     );
   }

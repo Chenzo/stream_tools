@@ -19,7 +19,7 @@ class VideoOutput extends Component {
     }
 
     render() {
-        return <video id="myVid" ref={this.videoRef}></video>;
+        return <video id="myVid" width="300" height="300" ref={this.videoRef}></video>;
     }
 }
 

@@ -44,6 +44,7 @@ class CircleCanvas extends React.Component {
                 var y2 = height/2 + Math.sin(p.angle) * (ss + this.radius);
                 ctx.beginPath();
                 //ctx.strokeStyle = "rgb(" + ss + ", " + ss + ", " + ss + ")";
+                ctx.strokeStyle = "#13252c";
                 ctx.lineWidth = 2;
                 ctx.moveTo(p.x, p.y);
                 ctx.lineTo(x2, y2);

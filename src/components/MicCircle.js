@@ -17,6 +17,10 @@ class MicCircle extends React.Component {
         this.audioContext = new (window.AudioContext ||
            window.webkitAudioContext)();
         this.analyser = this.audioContext.createAnalyser();
+        this.analyser.minDecibels = -90;
+        this.analyser.maxDecibels = -10;
+        this.analyser.smoothingTimeConstant = 0.85;
+        this.analyser.fftSize = 256;
         this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
         this.bufferLength = this.analyser.frequencyBinCount;
         this.source = this.audioContext.createMediaStreamSource(this.props.audio);

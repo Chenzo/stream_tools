@@ -7,7 +7,7 @@ class CircleCanvas extends React.Component {
         super(props);
         this.canvasRef = React.createRef();
         this.radius = 100;
-        this.num_items = 128;
+        this.num_items =128;
         this.particles = [];
         this.width = 500;
         this.height = 500;
@@ -54,7 +54,7 @@ class CircleCanvas extends React.Component {
                     ctx.beginPath();
                     //ctx.strokeStyle = "rgb(" + ss + ", " + ss + ", " + ss + ")";
                     ctx.strokeStyle = "#13252c";
-                    ctx.lineWidth = 6;
+                    ctx.lineWidth = 4;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(x2, y2);
                     ctx.stroke();
@@ -73,7 +73,7 @@ class CircleCanvas extends React.Component {
         function radians(deg) {return deg*Math.PI/180;};
 
         function distributeAngles(me, total) {
-            return me/total * 360;
+            return me/total * 360 - 180;
         }
 
         for (var i = 0; i < this.num_items; i++) {

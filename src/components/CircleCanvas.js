@@ -7,12 +7,18 @@ class CircleCanvas extends React.Component {
         super(props);
         this.canvasRef = React.createRef();
         this.radius = 100;
-        this.num_items = 125;
+        this.num_items = 128;
         this.particles = [];
         this.width = 500;
         this.height = 500;
+        this.waitCount = 0;
     
         this.makeAngles = this.makeAngles.bind(this);
+
+        this.state = { 
+            waitCount: 0,
+            counting: true
+        };
     }
 
     componentDidMount() {
@@ -25,33 +31,40 @@ class CircleCanvas extends React.Component {
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
+      
+        if (this.waitCount > 4) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            var iCount = 0;
+            for (const [i, s] of audioData.entries()) {
+                //console.log("VINCE VINCE");
+                iCount++;
+                var p = this.particles[i];
+                var vol = (s < 120) ? s : 121;
+                var ss = Math.abs(vol / 2 );
 
+                //console.log("vol: " + ss);
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                //var ss = mapSound(s, this.num_items, 5, 100);
+                // map to greyscale
+                //ctx.strokeStyle = rgb(map(i, 0, num_items, 0, 255));
 
-       for (const [i, s] of audioData.entries()) {
-            //console.log("VINCE VINCE");
-            var p = this.particles[i];
-            var vol = (s < 120) ? s : 121;
-            var ss = Math.abs(vol - 120);
+                if (typeof p != "undefined") {
+                    var x2 = width/2 + Math.cos(p.angle) * (ss + this.radius);
+                    var y2 = height/2 + Math.sin(p.angle) * (ss + this.radius);
+                    ctx.beginPath();
+                    //ctx.strokeStyle = "rgb(" + ss + ", " + ss + ", " + ss + ")";
+                    ctx.strokeStyle = "#13252c";
+                    ctx.lineWidth = 6;
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(x2, y2);
+                    ctx.stroke();
+                }
+            } 
+            this.waitCount = 0;
+        }
 
-            //var ss = mapSound(s, this.num_items, 5, 100);
-            // map to greyscale
-            //ctx.strokeStyle = rgb(map(i, 0, num_items, 0, 255));
-
-            if (typeof p != "undefined") {
-                var x2 = width/2 + Math.cos(p.angle) * (ss + this.radius);
-                var y2 = height/2 + Math.sin(p.angle) * (ss + this.radius);
-                ctx.beginPath();
-                //ctx.strokeStyle = "rgb(" + ss + ", " + ss + ", " + ss + ")";
-                ctx.strokeStyle = "#13252c";
-                ctx.lineWidth = 2;
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(x2, y2);
-                ctx.stroke();
-            }
-
-        }  
+        this.waitCount++;
+        
     }
 
     

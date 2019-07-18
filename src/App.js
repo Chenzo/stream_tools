@@ -83,6 +83,7 @@ class App extends Component{
         </div>
 
         <div className="avContainer">
+          <div className="goldBG streamName"><div className="windlass">Mr<span>.</span> Chenzo</div></div>
           <div className="audioContainer">
           {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
           {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}

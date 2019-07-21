@@ -10,7 +10,7 @@
 
   .avContainer {
     position: relative;
-    background: #777777;
+    background: #00ff00;
     width: 500px;
     height: 500px;
 
@@ -37,6 +37,15 @@
       top: 0px;
       left: 0px;
       z-index: 10;
+
+      &.flipped {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
     }
 
     .circleContainer {
@@ -57,7 +66,7 @@
       z-index: 5;
       width: 200px;
       height: 200px;
-      border: 2px solid $sea_green_1;
+      border: 2px solid $blue_3;
     }
 
     .imageContainer {

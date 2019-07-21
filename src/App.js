@@ -88,6 +88,10 @@ class App extends Component{
           {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
           {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}
           </div>
+          <div className="audioContainer flipped">
+          {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
+          {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}
+          </div>
           <div className="videoContainer circleContainer">
             {this.state.video ? <VideoOutput video={this.state.video} /> : ''}
           </div>

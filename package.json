@@ -2,11 +2,12 @@
   "name": "stream_tools",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --host 0.0.0.0",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doapp" : "electron ."
   },
   "author": "Chenzo",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^1.0.0",
+    "electron": "^5.0.7",
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",

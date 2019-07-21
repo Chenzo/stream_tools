@@ -54,7 +54,10 @@ class CircleCanvas extends React.Component {
                     ctx.beginPath();
                     //ctx.strokeStyle = "rgb(" + ss + ", " + ss + ", " + ss + ")";
 
-                    var gradient = ctx.createLinearGradient(0, 0, 400, 0);
+                    //var gradient = ctx.createLinearGradient(0, 0, 400, 0);
+                    var gradient = ctx.createRadialGradient(250,250,20, 250,250,175);
+
+
                     gradient.addColorStop("0", "#0e2b28");
                     gradient.addColorStop("0.5", "#0e2b28");
                     gradient.addColorStop("1.0", "#267e81"); 

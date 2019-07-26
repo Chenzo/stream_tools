@@ -62,6 +62,7 @@ module.exports = {
       /* { from: 'public/data', to: 'data' }, */
       { from: 'public/css', to: 'css' },
       { from: 'public/fonts', to: 'fonts' },
+      { from: 'public/images', to: 'images' },
       { from: 'public/js', to: 'js' },
       { from: 'main.js', to: 'main.js' },
       { from: 'preload.js', to: 'preload.js' }

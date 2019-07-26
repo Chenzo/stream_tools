@@ -3,9 +3,10 @@ import React, { Component} from "react";
 import {hot} from "react-hot-loader";
 import "./App.scss";
 import MicCircle from "./components/MicCircle";
-import AudioAnalyser from "./components/AudioAnalyser";
+//import AudioAnalyser from "./components/AudioAnalyser";
 import VideoOutput from "./components/VideoOutput";
 import mrChenzo from "./images/comodore_chenzo.jpg";
+import HeadBar from "./components/HeadBar";
 
 
 class App extends Component{
@@ -103,6 +104,12 @@ class App extends Component{
             <img src={mrChenzo} alt="Mr Chenzo" className="mrChenzo"/>
           </div>
         </div>
+
+
+        <header>
+          <HeadBar />
+        </header>
+
       </div>
     );
   }

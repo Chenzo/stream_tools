@@ -42,7 +42,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist/"),
-    publicPath: "/",
+    publicPath: "./",
     filename: "bundle.js"
   },
   devServer: {
@@ -60,7 +60,11 @@ module.exports = {
     }),
     new CopyPlugin([
       /* { from: 'public/data', to: 'data' }, */
-      { from: 'public/css', to: 'css' }
+      { from: 'public/css', to: 'css' },
+      { from: 'public/fonts', to: 'fonts' },
+      { from: 'public/js', to: 'js' },
+      { from: 'main.js', to: 'main.js' },
+      { from: 'preload.js', to: 'preload.js' }
     ])
   ]
 };

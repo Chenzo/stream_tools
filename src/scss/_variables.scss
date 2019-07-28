@@ -27,9 +27,10 @@ $off_green: #5e5c58;
 
 @font-face {
     font-family: 'windlass';
-    src:  url('/fonts/windlass.woff2') format('woff2'),
-            url('/fonts/windlass.woff') format('woff');
+    src:  url('~/fonts/windlass.woff2') format('woff2'),
+            url('~/fonts/windlass.woff') format('woff');
 }
+
 
 .windlass {
     font-family: 'windlass', sans-serif;

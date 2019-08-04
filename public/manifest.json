@@ -1,0 +1,19 @@
+{
+  "name": "Mr. Chenzo's Stream Tools",
+  "short_name": "Chenzo Tools",
+  "lang": "en-US",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "icons" : [
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/sotm_logo-192.png",
+        "sizes": "192x192"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/sotm_logo-512.png",
+        "sizes": "512x512"
+    }
+  
+]}

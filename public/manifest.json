@@ -8,11 +8,11 @@
   "background_color": "#ffffff",
   "icons" : [
     {
-        "src": "https://seaofthievesmap.chenzorama.com/images/sotm_logo-192.png",
-        "sizes": "192x192"
+        "src": "https://localhost:3000/images/256x256.png",
+        "sizes": "256x256"
     },
     {
-        "src": "https://seaofthievesmap.chenzorama.com/images/sotm_logo-512.png",
+        "src": "https://localhost:3000/images/512x512.png",
         "sizes": "512x512"
     }
   

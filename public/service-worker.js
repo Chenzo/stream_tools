@@ -1,6 +1,6 @@
 
 
-var dataCacheName = 'streamtools-0.1';
+var dataCacheName = 'streamtools-0.5';
 
 
 self.addEventListener('install', event => {
@@ -75,6 +75,12 @@ var filesToCache = [
 '/css/base.css',
 '/bundle.js',
 '/js/renderer.js',
+'/fonts/windlass.woff',
 '/fonts/windlass.woff2',
-'/images/chenzo_headshot.webm'
+'/images/chenzo_headshot.webm',
+'/images/16x16.png',
+'/images/32x32.png',
+'/images/192x192.png',
+'/images/256x256.png',
+'/images/512x512.png',
 ];

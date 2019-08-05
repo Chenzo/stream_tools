@@ -2,12 +2,8 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-console.log("HERE I AM");
-
 
 let deferredPrompt;
-var btnInstall = document.querySelector('#installBut');
-var words;
 
 window.addEventListener('beforeinstallprompt', (event) => {
 
@@ -20,22 +16,6 @@ window.addEventListener('beforeinstallprompt', (event) => {
     document.querySelector('#installBut').classList.add("showme");
 });
 
-/* btnInstall.addEventListener('click', () => {
-
-    document.querySelector('#installBut').classList.remove("showme");
-    // Show the modal add to home screen dialog
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choice) => {
-      if (choice.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      // Clear the saved prompt since it can't be used again
-      deferredPrompt = null;
-    });
-  }); */
 
   window.addEventListener('appinstalled', (evt) => {
     console.log('a2hs', 'installed');

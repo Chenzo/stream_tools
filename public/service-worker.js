@@ -72,5 +72,9 @@ self.addEventListener('activate', event => {
 var filesToCache = [
 '/index.html',
 '/manifest.json',
-'/css/base.css'
+'/css/base.css',
+'/bundle.js',
+'/js/renderer.js',
+'/fonts/windlass.woff2',
+'/images/chenzo_headshot.webm'
 ];

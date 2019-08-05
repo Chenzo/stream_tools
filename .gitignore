@@ -9,6 +9,8 @@ dist/
 maps
 maps/
 .vscode/
+bin/
+bin
 
 #merge files
 *.orig

@@ -7,6 +7,7 @@ import MicCircle from "./components/MicCircle";
 import VideoOutput from "./components/VideoOutput";
 import mrChenzo from "./images/comodore_chenzo.jpg";
 import HeadBar from "./components/HeadBar";
+import InstallButton from "./components/InstallButton";
 
 
 class App extends Component{
@@ -81,6 +82,7 @@ class App extends Component{
           <button onClick={this.handleVideoClick}>
             {this.state.video ? 'Vid On' : 'Vid Off'}
           </button>
+          <InstallButton/>
         </div>
 
         <div className="avContainer">
@@ -97,7 +99,7 @@ class App extends Component{
             {this.state.video ? <VideoOutput video={this.state.video} /> : ''}
           </div>
           <div className="imageContainer circleContainer">
-          <video width="250" autoplay="true" muted="true" loop="true">
+          <video width="250" autoPlay={true} muted={true} loop={true}>
             <source src="images/chenzo_headshot.webm"
                     type="video/webm" />
             </video>

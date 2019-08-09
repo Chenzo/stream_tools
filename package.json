@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "doapp": "electron .",
     "doappD": "electron dist/.",
-    "buildApp" : "electron-packager ."
+    "buildApp": "electron-packager ."
   },
   "author": "Chenzo",
   "license": "ISC",
@@ -30,9 +30,11 @@
     "electron-packager": "^14.0.2",
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^5.0.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
+    "url-loader": "^2.1.0",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.7.2"

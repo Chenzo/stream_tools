@@ -3,6 +3,7 @@ import {hot} from "react-hot-loader";
 
 import "../scss/_HeadBar.scss";
 
+
 class HeadBar extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,9 @@ class HeadBar extends React.Component {
     
     
     render() {
-      return <div className="headbar torn_2">THIS IS JUST A TEST</div>;
+      return <div>
+        <div className="headbar windlass top_bar "><span className="dropshadow_effect_1x tshadow" contentEditable="true">The Continuing Adventures of the Holy Bartender</span></div>
+      </div>;
     }
   }
   

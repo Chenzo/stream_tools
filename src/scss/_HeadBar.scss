@@ -1,7 +1,47 @@
 @import '_variables.scss';
 
 .headbar {
-    width: 1000px;
-    height: 50px;
-    background-color: red;
+    width: 1200px;
+    height: 60px;
+    //background-color: $blue_3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant: small-caps;
+    font-size: 20px;
+
+    background: linear-gradient(-45deg, $sea_green_1, $blue_3, $blue_4, $gold_1);
+	background-size: 400% 400%;
+	animation: gradientBG 15s ease infinite;
 }
+
+.top_bar {
+    clip-path: polygon(0% 0%, 5% 100%, 95% 100%, 100% 0%);
+
+    span {
+        font-size: 27px;
+        color: white;
+        &.tshadow {
+            text-shadow: 2px 2px 2px #000000;
+        }
+    }
+}
+
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
+
+
+

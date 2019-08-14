@@ -23,7 +23,7 @@ class HeadBar extends React.Component {
     
     render() {
       return <div>
-        <div className="headbar windlass top_bar "><span className="dropshadow_effect_1x tshadow" contentEditable="true">The Continuing Adventures of the Holy Bartender</span></div>
+        <div className="headbar windlass top_bar "><span className="dropshadow_effect_11x tshadow" contentEditable="true">The Continuing Adventures of the Holy Bartender</span></div>
       </div>;
     }
   }

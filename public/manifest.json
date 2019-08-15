@@ -8,11 +8,11 @@
   "background_color": "#ffffff",
   "icons" : [
     {
-        "src": "https://localhost:3000/images/256x256.png",
+        "src": "https://localhost:8443/images/256x256.png",
         "sizes": "256x256"
     },
     {
-        "src": "https://localhost:3000/images/512x512.png",
+        "src": "https://localhost:8443/images/512x512.png",
         "sizes": "512x512"
     }
   

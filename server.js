@@ -2,7 +2,8 @@
 var express = require("express");
 var app = express();
 var fs = require('fs');
-
+var http = require('http');
+var https = require('https');
 
 var key = fs.readFileSync('bin/private.key');
 var cert = fs.readFileSync( 'bin/private.pem' );
@@ -14,6 +15,8 @@ var options = {
     cert: cert,
     ca: ca
 };
+
+
 
 app.use(express.static('dist'));
 
@@ -27,3 +30,9 @@ var server = app.listen(8081, function(){
     var port = server.address().port;
     console.log("Server started at http://localhost:%s", port);
 });
+
+
+var httpsServer = https.createServer(options, app);
+httpsServer.listen(8443);
+sport = 8443;
+console.log("Secure server started at https://localhost:%s", sport);

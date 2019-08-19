@@ -67,6 +67,8 @@ module.exports = {
       { from: 'public/images', to: 'images' },
       { from: 'public/js', to: 'js' },
       { from: 'main.js', to: 'main.js' },
+      { from: 'public/manifest.json', to: 'manifest.json' },
+      { from: 'public/service-worker.js', to: 'service-worker.js' },
       { from: 'preload.js', to: 'preload.js' }
     ])
   ]

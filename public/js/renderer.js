@@ -23,5 +23,5 @@ window.addEventListener('beforeinstallprompt', (event) => {
 
 
   if (window.matchMedia('(display-mode: standalone)').matches) {
-    window.resizeTo(1200,900);
+    window.resizeTo(1400,900);
   }

@@ -7,28 +7,59 @@ header {
 .headbar {
     width: 1200px;
     height: 60px;
-    //background-color: $blue_3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-variant: small-caps;
-    font-size: 20px;
+    position: relative;
+    
+    
+    .innerBar {
+        position: absolute;
+        top: 0px;
+        left: 3px;
+        z-index: 4;
+        width:1194px;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-variant: small-caps;
+        font-size: 20px;
+        background: linear-gradient(-45deg, $sea_green_1, $blue_3, $blue_4, $gold_1);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
 
-    background: linear-gradient(-45deg, $sea_green_1, $blue_3, $blue_4, $gold_1);
-	background-size: 400% 400%;
-	animation: gradientBG 15s ease infinite;
-}
+        video {
+            display: none;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 1;
+        }
 
-.top_bar {
-    clip-path: polygon(0% 0%, 5% 100%, 95% 100%, 100% 0%);
-
-    span {
-        font-size: 27px;
-        color: white;
-        &.tshadow {
-            text-shadow: 2px 2px 2px #000000;
+        span {
+            z-index: 4;
+            position: relative;
+            font-size: 27px;
+            color: white;
+            &.tshadow {
+                text-shadow: 2px 2px 2px #000000;
+            }
         }
     }
+    .top_bar {
+        background: white;
+        width: 1200px;
+        height: 60px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 3;
+        display: none;
+    }
+}
+
+
+
+.top-clip {
+    clip-path: polygon(0% 0%, 5% 100%, 95% 100%, 100% 0%);
 }
 
 
@@ -46,6 +77,29 @@ header {
 
 
 
+.seperator {
 
+    position: absolute;
+    z-index: 10;
+    top: 47px;
+    left: 10px;
+    width: 1200px;
+
+    img {
+        position: absolute;
+        display: block;
+        top: -14px;
+        left: 50%;
+        margin-left: -24px;
+    }
+
+    hr.mid {
+        width: 100%;
+        border: 0;
+        height: 3px;
+        background-image: linear-gradient(to right, rgba($gold_1, 0), rgba($gold_1, 0.75), rgba($gold_1, 0));
+    }
+
+}
 
 

@@ -17,11 +17,13 @@ class App extends Component{
       isToggleOn: false,
       Volume: 0,
       audio: null,
-      video: null
+      video: null,
+      captureStream: null
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
+    this.handleScreenClick = this.handleScreenClick.bind(this);
   }
 
 
@@ -39,6 +41,18 @@ class App extends Component{
       video: false
     });
     this.setState({ audio });
+  }
+
+  async startCapture(displayMediaOptions) {
+    let captureStream = null;
+    console.log("here we are");
+    try {
+      captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+    } catch(err) {
+      console.error("Error: " + err);
+    }
+    //return captureStream;
+    this.setState({ captureStream });
   }
 
   stopMicrophone() {
@@ -72,6 +86,16 @@ class App extends Component{
     } 
   }
 
+  handleScreenClick() {
+    if (this.state.captureStream) {
+      console.log("NO SCREEN");
+    } else {
+      console.log("GET SCREEN");
+      this.startCapture();
+      
+    } 
+  }
+
   render(){
     return(
       <div className="App">
@@ -81,6 +105,9 @@ class App extends Component{
           </button>
           <button onClick={this.handleVideoClick}>
             {this.state.video ? 'Vid On' : 'Vid Off'}
+          </button>
+          <button onClick={this.handleScreenClick}>
+            {this.state.captureStream ? 'Screen On' : 'Screen Off'}
           </button>
           <InstallButton/>
         </div>
@@ -111,6 +138,14 @@ class App extends Component{
         <header>
           <HeadBar />
         </header>
+
+
+        {/*
+        video here:
+        <div className="">
+            {this.state.captureStream ? <VideoOutput video={this.state.captureStream} /> : ''}
+        </div>
+        */}
 
       </div>
     );

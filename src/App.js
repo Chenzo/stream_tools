@@ -130,7 +130,7 @@ class App extends Component{
             <source src="video/chenzo_headshot.mp4"
                     type="video/mp4" />
             </video>
-            <img src={mrChenzo} alt="Mr Chenzo" className="mrChenzo"/>
+            {/* <img src={mrChenzo} alt="Mr Chenzo" className="mrChenzo"/> */}
           </div>
         </div>
 

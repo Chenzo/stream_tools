@@ -3,25 +3,40 @@
 
 .App {
   font-family: Arial, Helvetica, sans-serif;
-
+  display: block;
+  width: 1920px;
+  height: 1080px;
+  //background: url(/images/placement_bg.jpg);
+  background-color: magenta;
+  position: relative;
+  overflow: hidden;
 
   div.controls {
-    padding: 10px;
     background: #333;
     border-bottom: 1px solid black;
     color: white;
     button {
       margin: 0 10px 0 0;
     }
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: auto;
+    padding: 10px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
 
   .avContainer {
     position: relative;
-    background: #00ff00; //chroma green
-    background: magenta;
+    //background: #00ff00; //chroma green
+    //background: magenta;
     width: 500px;
     height: 500px;
+    position: absolute;
+    top: 614px;
+    left: 1472px;
 
     .streamName {
       padding: 6px 40px;
@@ -32,6 +47,8 @@
       top: 65%;
       -webkit-transform: translate(-50%, 0);
       transform: translate(-50%, 0);
+      text-shadow: 2px 2px 2px #000000;
+      color: white;
 
       div {
         font-variant: small-caps;

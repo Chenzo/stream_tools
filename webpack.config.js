@@ -65,6 +65,7 @@ module.exports = {
       { from: 'public/css', to: 'css' },
       { from: 'public/fonts', to: 'fonts' },
       { from: 'public/images', to: 'images' },
+      { from: 'public/video', to: 'video' },
       { from: 'public/js', to: 'js' },
       { from: 'main.js', to: 'main.js' },
       { from: 'public/manifest.json', to: 'manifest.json' },

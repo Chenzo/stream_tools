@@ -127,8 +127,8 @@ class App extends Component{
           </div>
           <div className="imageContainer circleContainer">
           <video width="250" autoPlay={true} muted={true} loop={true}>
-            <source src="images/chenzo_headshot.webm"
-                    type="video/webm" />
+            <source src="video/chenzo_headshot.mp4"
+                    type="video/mp4" />
             </video>
             <img src={mrChenzo} alt="Mr Chenzo" className="mrChenzo"/>
           </div>

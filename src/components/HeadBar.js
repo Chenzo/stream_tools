@@ -31,7 +31,7 @@ class HeadBar extends React.Component {
             <video width="1200" autoPlay={true} muted={true} loop={true}>
               <source 
                 //src="images/smokeywater.mp4"
-                src="images/waterup.mp4"
+                src="video/waterup.mp4"
                 type="video/mp4" />
             </video>
           </div>

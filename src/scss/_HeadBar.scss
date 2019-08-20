@@ -32,6 +32,17 @@ header {
             top: 0px;
             left: 0px;
             z-index: 1;
+
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
+
+            -moz-transition: all 1s;
+            -webkit-transition: all 1s;
+            -o-transition: all 1s;
+            transition: all 1s ;
         }
 
         span {

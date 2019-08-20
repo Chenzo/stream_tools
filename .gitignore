@@ -38,3 +38,8 @@ ROOT.iml
 *.sublime-project
 *.sublime-workspace
 
+
+
+
+*.mp4
+*.webm

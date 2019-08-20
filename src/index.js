@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App.js";
+import loadable from '@loadable/component';
+
+const App = loadable(() => import('./App'))
+//import App from "./App.js";
 
 
 ReactDOM.render(

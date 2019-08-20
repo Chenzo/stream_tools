@@ -29,13 +29,15 @@ class HeadBar extends React.Component {
         <div className="innerBar top-clip windlass">
             <span className="dropshadow_effect_11x tshadow" contentEditable="true">The Continuing Tales from the Deck Of The Holy Bartender</span>
             <video width="1200" autoPlay={true} muted={true} loop={true}>
-              <source src="images/water1.webm"
-                        type="video/webm" />
+              <source 
+                //src="images/smokeywater.mp4"
+                src="images/waterup.mp4"
+                type="video/mp4" />
             </video>
           </div>
-          <div class="seperator">
+          <div className="seperator">
             <img src="images/pileofskulls.png" />
-            <hr class="mid" />
+            <hr className="mid" />
         </div>
       </div>;
     }

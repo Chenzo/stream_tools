@@ -8,6 +8,7 @@ import VideoOutput from "./components/VideoOutput";
 import mrChenzo from "./images/comodore_chenzo.jpg";
 import HeadBar from "./components/HeadBar";
 import InstallButton from "./components/InstallButton";
+import FullscreenButton from "./components/FullscreenButton";
 
 
 class App extends Component{
@@ -24,7 +25,6 @@ class App extends Component{
     this.handleClick = this.handleClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.handleScreenClick = this.handleScreenClick.bind(this);
-    this.handleFullScreenClick = this.handleFullScreenClick.bind(this);
   }
 
 
@@ -97,23 +97,27 @@ class App extends Component{
     } 
   }
 
-  handleFullScreenClick() {
-    console.log("go fullscreen");
-  }
+
 
   render(){
+    const micOnClass = this.state.isToggleOn ? 'btn-success active' : 'btn-default ';
+    const vidOnClass = this.state.video ? 'btn-success active' : 'btn-default ';
     return(
       <div className="App">
         <div className="controls">
-          <button onClick={this.handleClick} className="btn btn-default">
+          <div className="minibutton"></div>
+          <button onClick={this.handleClick} className={`btn ${micOnClass}`}>
             {this.state.isToggleOn ? 'Mic On' : 'Mic Off'}
           </button>
-          <button onClick={this.handleVideoClick} className="btn btn-default">
+          <button onClick={this.handleVideoClick} className={`btn ${vidOnClass}`}>
             {this.state.video ? 'Vid On' : 'Vid Off'}
           </button>
+          {/* 
           <button onClick={this.handleScreenClick} className="btn btn-default">
             {this.state.captureStream ? 'Screen On' : 'Screen Off'}
           </button>
+          */}
+          <FullscreenButton/>
           <InstallButton/>
         </div>
 

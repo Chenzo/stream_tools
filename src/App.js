@@ -19,12 +19,14 @@ class App extends Component{
       Volume: 0,
       audio: null,
       video: null,
+      hideCont: false,
       captureStream: null
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.handleScreenClick = this.handleScreenClick.bind(this);
+    this.handleHideControls = this.handleHideControls.bind(this);
   }
 
 
@@ -98,14 +100,23 @@ class App extends Component{
   }
 
 
+  handleHideControls() {
+    console.log("wooo");
+    this.setState(state => ({
+      hideCont: !state.hideCont
+    }));
+    console.log(this.state.hideCont);
+  }
+
 
   render(){
     const micOnClass = this.state.isToggleOn ? 'btn-success active' : 'btn-default ';
     const vidOnClass = this.state.video ? 'btn-success active' : 'btn-default ';
+    const controlHideClass = this.state.hideCont ? 'small' : '';
     return(
       <div className="App">
-        <div className="controls">
-          <div className="minibutton"></div>
+        <div className={`controls test ${controlHideClass}`}>
+          <div className="minibutton" onClick={this.handleHideControls}></div>
           <button onClick={this.handleClick} className={`btn ${micOnClass}`}>
             {this.state.isToggleOn ? 'Mic On' : 'Mic Off'}
           </button>

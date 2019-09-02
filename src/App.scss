@@ -30,12 +30,18 @@
     div.minibutton {
       width: 20px;
       height: 10px;
-      background: #000000;
+      background: $blue_3;
       display: block;
       position: absolute;
-      top: -4px;
-      left: calc(50% - 10px);
+      top: -5px;
+      left: 50%;
       cursor: pointer;
+    }
+
+    &.small {
+      bottom: -45px;
+      background: none;
+
     }
   }
 

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {hot} from "react-hot-loader";
 
 import "../scss/_InstallButton.scss";
+import "../scss/_Buttons.scss";
 
 class InstallButton extends React.Component {
     constructor(props) {
@@ -40,8 +41,8 @@ class InstallButton extends React.Component {
     
     
     render() {
-      return <div className="installBut" id="installBut" onClick={this.handleInstallClick}>
-            <span>install</span>
+      return <div className="installBut btn btn-info" id="installBut" onClick={this.handleInstallClick}>
+            <span>INSTALL</span>
         </div>;
     }
   }

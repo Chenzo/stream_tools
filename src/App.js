@@ -24,6 +24,7 @@ class App extends Component{
     this.handleClick = this.handleClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.handleScreenClick = this.handleScreenClick.bind(this);
+    this.handleFullScreenClick = this.handleFullScreenClick.bind(this);
   }
 
 
@@ -96,17 +97,21 @@ class App extends Component{
     } 
   }
 
+  handleFullScreenClick() {
+    console.log("go fullscreen");
+  }
+
   render(){
     return(
       <div className="App">
         <div className="controls">
-          <button onClick={this.handleClick}>
+          <button onClick={this.handleClick} className="btn btn-default">
             {this.state.isToggleOn ? 'Mic On' : 'Mic Off'}
           </button>
-          <button onClick={this.handleVideoClick}>
+          <button onClick={this.handleVideoClick} className="btn btn-default">
             {this.state.video ? 'Vid On' : 'Vid Off'}
           </button>
-          <button onClick={this.handleScreenClick}>
+          <button onClick={this.handleScreenClick} className="btn btn-default">
             {this.state.captureStream ? 'Screen On' : 'Screen Off'}
           </button>
           <InstallButton/>

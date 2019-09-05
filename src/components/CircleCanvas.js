@@ -7,7 +7,7 @@ class CircleCanvas extends React.Component {
         super(props);
         this.canvasRef = React.createRef();
         this.radius = 100;
-        this.num_items =64;
+        this.num_items = 40;
         this.particles = [];
         this.width = 500;
         this.height = 500;
@@ -19,6 +19,8 @@ class CircleCanvas extends React.Component {
             waitCount: 0,
             counting: true
         };
+
+        this.tick = this.tick.bind(this);
     }
 
     componentDidMount() {
@@ -26,13 +28,26 @@ class CircleCanvas extends React.Component {
     }
 
     componentDidUpdate() {
+        cancelAnimationFrame(this.rafId);
+        this.rafId = requestAnimationFrame(this.tick);
+        
+        //this.tick();
+    }
+
+    componentWillUnmount() {
+        cancelAnimationFrame(this.rafId);
+    }
+
+
+    tick() {
+        
         const {audioData} = this.props;
         const canvas = this.canvasRef.current;
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
-      
-        if (this.waitCount > 4) {
+
+        //if (this.waitCount > 4) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             var iCount = 0;
             for (const [i, s] of audioData.entries()) {
@@ -40,7 +55,7 @@ class CircleCanvas extends React.Component {
                 iCount++;
                 var p = this.particles[i];
                 var vol = (s < 120) ? s : 121;
-                var ss = Math.abs(vol / 1.5 );
+                var ss = Math.abs(vol / 2 );
 
                 //console.log("vol: " + ss);
 
@@ -65,17 +80,18 @@ class CircleCanvas extends React.Component {
                     ctx.strokeStyle = gradient;
 
                     //ctx.strokeStyle = "#13252c";
-                    ctx.lineWidth = 4;
+                    ctx.lineWidth = 6;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(x2, y2);
                     ctx.stroke();
                 }
             } 
-            this.waitCount = 0;
-        }
+            //this.waitCount = 0;
+        //}
 
-        this.waitCount++;
-        
+        //this.waitCount++;
+
+        this.rafId = requestAnimationFrame(this.tick);
     }
 
     

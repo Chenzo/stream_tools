@@ -27,6 +27,7 @@ class App extends Component{
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.handleScreenClick = this.handleScreenClick.bind(this);
     this.handleHideControls = this.handleHideControls.bind(this);
+    this.handleTwichClick = this.handleTwichClick.bind(this);
   }
 
 
@@ -108,6 +109,16 @@ class App extends Component{
     console.log(this.state.hideCont);
   }
 
+  handleTwichClick() {
+    
+
+    console.log('twitcher');
+    
+
+  } 
+  
+
+
 
   render(){
     const micOnClass = this.state.isToggleOn ? 'btn-success active' : 'btn-default ';
@@ -122,6 +133,9 @@ class App extends Component{
           </button>
           <button onClick={this.handleVideoClick} className={`btn ${vidOnClass}`}>
             {this.state.video ? 'Vid On' : 'Vid Off'}
+          </button>
+          <button onClick={this.handleTwichClick} className="btn btn-default">
+            Twitcher
           </button>
           {/* 
           <button onClick={this.handleScreenClick} className="btn btn-default">

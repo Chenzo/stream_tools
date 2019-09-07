@@ -9,6 +9,8 @@ import mrChenzo from "./images/comodore_chenzo.jpg";
 import HeadBar from "./components/HeadBar";
 import InstallButton from "./components/InstallButton";
 import FullscreenButton from "./components/FullscreenButton";
+import TwitchJS from 'twitch-js';
+import configData from './config.js';
 
 
 class App extends Component{
@@ -113,7 +115,44 @@ class App extends Component{
     
 
     console.log('twitcher');
-    
+    const options = {
+      channels: ["#chenzorama"],
+      connection: {
+        secure: true
+      },
+      identity: {
+        username: "chenzorama",
+        password: configData.OAUTH
+      },
+    };
+
+    const client = new TwitchJS.client(options);
+
+    // Add chat event listener that will respond to "!command" messages with:
+    // "Hello world!".
+    client.on('chat', (channel, userstate, message, self) => {
+      console
+        .log(`Message "${message}" received from ${userstate['display-name']}`);
+
+      // Do not repond if the message is from the connected identity.
+      if (self) return;
+
+      if (options.identity && message === '!command') {
+        // If an identity was provided, respond in channel with message.
+        client.say(channel, 'Hello world!');
+     }
+    });
+
+    client.on('join', function(channel, username, self) {
+      // Do your stuff.
+      console.log("so and so joined: " + username);
+      console.log("someone joined");
+    });
+
+    // Finally, connect to the channel
+    client.connect();
+
+    console.log('twitch activated');
 
   } 
   

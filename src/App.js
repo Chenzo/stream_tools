@@ -24,14 +24,15 @@ class App extends Component{
       audio: null,
       video: null,
       hideCont: false,
-      captureStream: null
+      captureStream: null,
+      crew: []
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.handleScreenClick = this.handleScreenClick.bind(this);
     this.handleHideControls = this.handleHideControls.bind(this);
-
+    this.testButtonAction = this.testButtonAction.bind(this);
     this.initTwitch();
   }
 
@@ -115,6 +116,11 @@ class App extends Component{
   }
 
 
+
+  testButtonAction() {
+    console.log("boops!!");
+    this.setState({ crew: ["UntrueHero", "THProfessor"]  });
+  }
   
 
 
@@ -192,6 +198,11 @@ class App extends Component{
             {this.state.captureStream ? 'Screen On' : 'Screen Off'}
           </button>
           */}
+
+          <button onClick={this.testButtonAction} className="btn btn-default">
+            TEST 
+          </button>
+          
           <FullscreenButton/>
           <InstallButton/>
         </div>
@@ -218,7 +229,7 @@ class App extends Component{
           </div>
         </div>
 
-        <Crew />
+        <Crew members={this.state.crew} ref={window.crew}/>
 
         <header>
           <HeadBar />

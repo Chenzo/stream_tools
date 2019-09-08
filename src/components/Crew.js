@@ -13,15 +13,10 @@ class Crew extends React.Component {
             bgColor: "ff00ff"
         };
 
-        this.thecontent = <div className="theCrew windlass">
-            <h2>Crew:</h2>
-            <div className="crewMate">UntrueHero</div>
-            <div className="crewMate">TNProfessor</div>
-        </div>;
     }
 
     componentDidMount() {
-        
+        //this.buildList();
     }
 
     componentDidUpdate() {
@@ -32,12 +27,26 @@ class Crew extends React.Component {
         
     }
 
-    
+
     render() {
-      return <div className="crew_space">
-            
-            <RaggedPaper thecontent={this.thecontent}/>
-        </div>;
+        var spaceHTML =  <div></div>;
+
+        if (this.props.members.length > 0) {
+            spaceHTML = <div className="crew_space">
+            {/* <RaggedPaper thecontent={this.state.thecontent}/> */}
+            <RaggedPaper thecontent={
+                    <div className="theCrew windlass">
+                    <h2>Crew:</h2>
+                    {this.props.members.map((member, index) => (
+                        <div className="crewMate" key={index}>{member}</div>
+                    ))}
+                    </div>
+                    }/>
+            </div>
+
+        }
+
+      return spaceHTML;
     }
   }
   

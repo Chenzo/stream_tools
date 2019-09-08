@@ -81,6 +81,8 @@ var filesToCache = [
 '/video/chenzo_headshot.mp4',
 '/video/waterup.mp4',
 '/images/pileofskulls.png',
+'/images/divider.png',
+'/images/goldpaper.png',
 '/images/16x16.png',
 '/images/32x32.png',
 '/images/192x192.png',

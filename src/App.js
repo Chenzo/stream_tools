@@ -9,8 +9,10 @@ import mrChenzo from "./images/comodore_chenzo.jpg";
 import HeadBar from "./components/HeadBar";
 import InstallButton from "./components/InstallButton";
 import FullscreenButton from "./components/FullscreenButton";
+import Crew from "./components/Crew";
 import TwitchJS from 'twitch-js';
 import configData from './config.js'; 
+import FootBar from "./components/FootBar";
 
 
 class App extends Component{
@@ -216,11 +218,14 @@ class App extends Component{
           </div>
         </div>
 
+        <Crew />
 
         <header>
           <HeadBar />
         </header>
 
+
+        <FootBar/>
 
         {/*
         video here:

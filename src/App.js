@@ -117,9 +117,18 @@ class App extends Component{
 
 
 
+  addCrew(crewmemeber) {
+    const crewArray = this.state.crew;
+    if (!crewArray.includes(crewmemeber)) {
+      crewArray.push(crewmemeber);
+      this.setState({ crew: crewArray  });
+    }
+  }
+
   testButtonAction() {
-    console.log("boops!!");
-    this.setState({ crew: ["UntrueHero", "THProfessor"]  });
+    console.log("boops!");
+    this.addCrew("Vince");
+    //this.setState({ crew: ["UntrueHero", "THProfessor"]  });
   }
   
 
@@ -145,25 +154,39 @@ class App extends Component{
       console
         .log(`Message "${message}" received from ${userstate['display-name']}`);
 
-        console.log(userstate);
+        //console.log(userstate);
+
+
+
       // Do not repond if the message is from the connected identity.
       if (self) return;
+
+      
+      if (options.identity && message.substring(0, 8) === '!addcrew') {
+        if (userstate['display-name'] == "Chenzorama") {
+          const crewname = message.substr(9);//.split(" ")[0];
+          this.addCrew(crewname);
+          client.say(channel, crewname + ' add as crewmember!');
+        } 
+      }
 
       if (options.identity && message === '!command') {
         // If an identity was provided, respond in channel with message.
         client.say(channel, 'Hello world!');
       }
+
+      
     });
 
     client.on('join', function(channel, username, self) {
       //User Detected
-      console.log(username + "has joined the party"+ " | isSelf: " + self);
+      console.log(username + " has joined the party"+ " | isSelf: " + self);
     });
 
 
     client.on('part', function(channel, username, self) {
       //User Left
-      console.log(username + "has left the building" + " | isSelf: " + self);
+      console.log(username + " has left the building" + " | isSelf: " + self);
     });
 
     // Finally, connect to the channel

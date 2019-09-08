@@ -10,7 +10,7 @@ import HeadBar from "./components/HeadBar";
 import InstallButton from "./components/InstallButton";
 import FullscreenButton from "./components/FullscreenButton";
 import TwitchJS from 'twitch-js';
-import configData from './config.js';
+import configData from './config.js'; 
 
 
 class App extends Component{
@@ -29,7 +29,8 @@ class App extends Component{
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.handleScreenClick = this.handleScreenClick.bind(this);
     this.handleHideControls = this.handleHideControls.bind(this);
-    this.handleTwichClick = this.handleTwichClick.bind(this);
+
+    this.initTwitch();
   }
 
 
@@ -111,10 +112,14 @@ class App extends Component{
     console.log(this.state.hideCont);
   }
 
-  handleTwichClick() {
-    
 
-    console.log('twitcher');
+  
+
+
+
+
+  initTwitch() {
+    console.log('Activating Twitch');
     const options = {
       channels: ["#chenzorama"],
       connection: {
@@ -123,39 +128,46 @@ class App extends Component{
       identity: {
         username: "chenzorama",
         password: configData.OAUTH
-      },
+      }
     };
 
     const client = new TwitchJS.client(options);
 
-    // Add chat event listener that will respond to "!command" messages with:
-    // "Hello world!".
     client.on('chat', (channel, userstate, message, self) => {
       console
         .log(`Message "${message}" received from ${userstate['display-name']}`);
 
+        console.log(userstate);
       // Do not repond if the message is from the connected identity.
       if (self) return;
 
       if (options.identity && message === '!command') {
         // If an identity was provided, respond in channel with message.
         client.say(channel, 'Hello world!');
-     }
+      }
     });
 
     client.on('join', function(channel, username, self) {
-      // Do your stuff.
-      console.log("so and so joined: " + username);
-      console.log("someone joined");
+      //User Detected
+      console.log(username + "has joined the party"+ " | isSelf: " + self);
+    });
+
+
+    client.on('part', function(channel, username, self) {
+      //User Left
+      console.log(username + "has left the building" + " | isSelf: " + self);
     });
 
     // Finally, connect to the channel
     client.connect();
 
-    console.log('twitch activated');
+    console.log('---Twitch Activated');
+  }
 
-  } 
-  
+
+
+
+
 
 
 
@@ -172,9 +184,6 @@ class App extends Component{
           </button>
           <button onClick={this.handleVideoClick} className={`btn ${vidOnClass}`}>
             {this.state.video ? 'Vid On' : 'Vid Off'}
-          </button>
-          <button onClick={this.handleTwichClick} className="btn btn-default">
-            Twitcher
           </button>
           {/* 
           <button onClick={this.handleScreenClick} className="btn btn-default">

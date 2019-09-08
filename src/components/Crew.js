@@ -14,6 +14,7 @@ class Crew extends React.Component {
         };
 
         this.thecontent = <div className="theCrew windlass">
+            <h2>Crew:</h2>
             <div className="crewMate">UntrueHero</div>
             <div className="crewMate">TNProfessor</div>
         </div>;
@@ -34,7 +35,7 @@ class Crew extends React.Component {
     
     render() {
       return <div className="crew_space">
-            <h2 className="windlass">Crew:</h2>
+            
             <RaggedPaper thecontent={this.thecontent}/>
         </div>;
     }

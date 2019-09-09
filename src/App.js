@@ -125,6 +125,14 @@ class App extends Component{
     }
   }
 
+  removeCrew(crewInt) {
+    const crewArray = this.state.crew;
+    console.log("try to remove");
+    var removed = crewArray.splice(crewInt - 1, 1);
+    this.setState({ crew: crewArray  });
+    return removed;
+  }
+
   testButtonAction() {
     console.log("boops!");
     this.addCrew("Vince");
@@ -154,7 +162,7 @@ class App extends Component{
       console
         .log(`Message "${message}" received from ${userstate['display-name']}`);
 
-        //console.log(userstate);
+        console.log(userstate);
 
 
 
@@ -167,6 +175,15 @@ class App extends Component{
           const crewname = message.substr(9);//.split(" ")[0];
           this.addCrew(crewname);
           client.say(channel, crewname + ' add as crewmember!');
+        } 
+      }
+
+      if (options.identity && message.substring(0, 11) === '!removecrew') {
+        if (userstate['display-name'] == "Chenzorama") {
+          console.log("removing")
+          const crewInt = message.substring(12);
+          const who = this.removeCrew(crewInt);
+          client.say(channel, who + ' add as crewmember!');
         } 
       }
 

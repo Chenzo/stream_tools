@@ -25,7 +25,8 @@ class App extends Component{
       video: null,
       hideCont: false,
       captureStream: null,
-      crew: []
+      crew: [],
+      followData: {}
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -133,6 +134,25 @@ class App extends Component{
     return removed;
   }
 
+
+  twitchFetch() {
+    fetch('https://api.twitch.tv/helix/users/follows?to_id=' + configData.userID, {
+      headers: {
+        'Client-ID': configData.Client_ID
+       }
+    })
+    .then(response => response.json())
+    .then(data =>
+      this.setState({ followData: data })
+    )
+    .catch(error => 
+      console.log("Twitch Fetch Errored: " + error)
+    );
+  }
+
+
+
+
   testButtonAction() {
     console.log("boops!");
     this.addCrew("Vince");
@@ -171,7 +191,7 @@ class App extends Component{
 
       
       if (options.identity && message.substring(0, 8) === '!addcrew') {
-        if (userstate['display-name'] == "Chenzorama") {
+        if (userstate['display-name'] == "Chenzorama" || userstate['mod']) {
           const crewname = message.substr(9);//.split(" ")[0];
           this.addCrew(crewname);
           client.say(channel, crewname + ' add as crewmember!');
@@ -179,7 +199,7 @@ class App extends Component{
       }
 
       if (options.identity && message.substring(0, 11) === '!removecrew') {
-        if (userstate['display-name'] == "Chenzorama") {
+        if (userstate['display-name'] == "Chenzorama" || userstate['mod']) {
           console.log("removing")
           const crewInt = message.substring(12);
           const who = this.removeCrew(crewInt);
@@ -208,12 +228,13 @@ class App extends Component{
 
     // Finally, connect to the channel
     client.connect();
-
     console.log('---Twitch Activated');
   }
 
 
-
+  componentDidMount() {
+    this.twitchFetch();
+  }
 
 
 
@@ -276,7 +297,7 @@ class App extends Component{
         </header>
 
 
-        <FootBar/>
+        <FootBar followData={this.state.followData}/>
 
         {/*
         video here:

@@ -22,11 +22,18 @@ class Footbar extends React.Component {
     
     
     render() {
-      return <footer>
-          <div className="latest windlass">
-              Lastest Follower: <span>Some Guy</span>
-          </div>
-      </footer>;
+
+        var lastFollow;
+        if (this.props.followData.data) {
+            var who = this.props.followData.data[0].from_name;
+            lastFollow = <div>Lastest Follower: <span>{who}</span></div>
+        }
+
+        return <footer>
+            <div className="latest windlass">
+            {lastFollow}
+            </div>
+        </footer>;
     }
   }
   

@@ -194,7 +194,7 @@ class App extends Component{
         if (userstate['display-name'] == "Chenzorama" || userstate['mod']) {
           const crewname = message.substr(9);//.split(" ")[0];
           this.addCrew(crewname);
-          client.say(channel, crewname + ' add as crewmember!');
+          client.say(channel, crewname + ' added as crew member!');
         } 
       }
 
@@ -203,7 +203,7 @@ class App extends Component{
           console.log("removing")
           const crewInt = message.substring(12);
           const who = this.removeCrew(crewInt);
-          client.say(channel, who + ' add as crewmember!');
+          client.say(channel, who + ' removed as crew member!');
         } 
       }
 

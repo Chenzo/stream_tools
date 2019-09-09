@@ -1,6 +1,6 @@
 
 
-var dataCacheName = 'streamtools-0.9.1';
+var dataCacheName = 'streamtools-0.9.4';
 
 
 self.addEventListener('install', event => {

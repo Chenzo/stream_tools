@@ -151,12 +151,31 @@ class App extends Component{
   }
 
 
+  getTwitchData() {
+    fetch('https://api.twitch.tv/helix/users?login=lirik', {
+      headers: {
+        'Client-ID': configData.Client_ID
+       }
+    })
+    .then(response => response.json())
+    .then(data =>
+      console.log(data)
+    )
+    .catch(error => 
+      console.log("Twitch Fetch Errored: " + error)
+    );
+  }
+
+
 
 
   testButtonAction() {
-    console.log("boops!");
+    console.log("boops!!!!");
     this.addCrew("Vince");
     //this.setState({ crew: ["UntrueHero", "THProfessor"]  });
+    this.getTwitchData();
+
+
   }
   
 

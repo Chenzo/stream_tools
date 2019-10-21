@@ -75,6 +75,8 @@ var filesToCache = [
 '/css/base.css',
 '/bundle.js',
 '/1.bundle.js',
+'/2.bundle.js',
+'/js/rednerer.js',
 '/fonts/windlass.woff',
 '/fonts/windlass.woff2',
 '/video/chenzo_headshot.mp4',

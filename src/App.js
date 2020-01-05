@@ -10,6 +10,7 @@ import HeadBar from "./components/HeadBar";
 import InstallButton from "./components/InstallButton";
 import FullscreenButton from "./components/FullscreenButton";
 import Crew from "./components/Crew";
+
 import TwitchJS from 'twitch-js';
 import configData from './config.js'; 
 import FootBar from "./components/FootBar";
@@ -23,8 +24,10 @@ class App extends Component{
       Volume: 0,
       audio: null,
       video: null,
+      showWaves: false,
       hideCont: false,
       captureStream: null,
+      audioDelayTime: 0.9,
       crew: [],
       followData: {}
     };
@@ -34,6 +37,8 @@ class App extends Component{
     this.handleScreenClick = this.handleScreenClick.bind(this);
     this.handleHideControls = this.handleHideControls.bind(this);
     this.testButtonAction = this.testButtonAction.bind(this);
+    this.waveButtonAction = this.waveButtonAction.bind(this);
+    
     this.initTwitch();
   }
 
@@ -167,7 +172,19 @@ class App extends Component{
   }
 
 
+  adjustDelay(newVal) {
 
+    this.setState({ audioDelayTime : newVal  });
+  }
+
+  waveButtonAction() {
+    if (this.state.showWaves) {
+      this.setState({ showWaves: false  });
+    } else {
+      console.log("Show Waves!");
+      this.setState({ showWaves: true  });
+    } 
+  }
 
   testButtonAction() {
     console.log("boops!!!!");
@@ -262,6 +279,7 @@ class App extends Component{
   render(){
     const micOnClass = this.state.isToggleOn ? 'btn-success active' : 'btn-default ';
     const vidOnClass = this.state.video ? 'btn-success active' : 'btn-default ';
+    const wvOnClass = this.state.showWaves ? 'btn-success active' : 'btn-default ';
     const controlHideClass = this.state.hideCont ? 'small' : '';
     return(
       <div className="App">
@@ -282,6 +300,17 @@ class App extends Component{
           <button onClick={this.testButtonAction} className="btn btn-default">
             TEST 
           </button>
+
+          <button onClick={this.waveButtonAction}  className={`btn ${wvOnClass}`}>
+            WAVES 
+          </button>
+
+          <input
+              className="texter"
+              type="text" value={this.state.audioDelayTime}
+              id="delayTime"
+              onChange={e => this.adjustDelay(e.target.value)}
+          />
           
           <FullscreenButton/>
           <InstallButton/>
@@ -290,11 +319,11 @@ class App extends Component{
         <div className="avContainer">
           <div className="goldBG streamName"><div className="windlass">Mr<span>.</span> Chenzo</div></div>
           <div className="audioContainer">
-          {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
+          {this.state.audio ? <MicCircle id="micCircle" audio={this.state.audio} audioDelayTime={this.state.audioDelayTime}/> : ''}
           {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}
           </div>
           <div className="audioContainer flipped">
-          {this.state.audio ? <MicCircle audio={this.state.audio} /> : ''}
+          {this.state.audio ? <MicCircle id="micCircleRight" audio={this.state.audio} audioDelayTime={this.state.audioDelayTime}/> : ''}
           {/* {this.state.audio ? <AudioAnalyser audio={this.state.audio} /> : ''} */}
           </div>
           <div className="videoContainer circleContainer">
@@ -302,8 +331,8 @@ class App extends Component{
           </div>
           <div className="imageContainer circleContainer">
           <video width="250" autoPlay={true} muted={true} loop={true}>
-            <source src="video/chenzo_headshot.mp4"
-                    type="video/mp4" />
+            <source src="video/chenzo_headshot.webm"
+                    type="video/webm" />
             </video>
             {/* <img src={mrChenzo} alt="Mr Chenzo" className="mrChenzo"/> */}
           </div>
@@ -312,7 +341,7 @@ class App extends Component{
         <Crew members={this.state.crew} ref={window.crew}/>
 
         <header>
-          <HeadBar />
+          <HeadBar showWaves={this.state.showWaves}/>
         </header>
 
 

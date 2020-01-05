@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {hot} from "react-hot-loader";
 
+import Waves from "./Waves";
+
 import "../scss/_HeadBar.scss";
 
 
@@ -28,12 +30,7 @@ class HeadBar extends React.Component {
         </div>
         <div className="innerBar top-clip windlass">
             <span className="dropshadow_effect_11x tshadow" contentEditable="true">The Continuing Tales from the Deck Of The Holy Bartender</span>
-            {/* <video width="1200" autoPlay={true} muted={true} loop={true}>
-              <source 
-                //src="images/smokeywater.mp4"
-                src="video/waterup.mp4"
-                type="video/mp4" />
-            </video> */}
+            {this.props.showWaves ? <Waves /> : ''}
           </div>
           <div className="seperator">
             <img src="images/pileofskulls.png" />

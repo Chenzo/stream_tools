@@ -1,8 +1,5 @@
 @import '_variables.scss';
 
-/* header {
-    //background-color: magenta;
-} */
 
 .headbar {
     width: 1200px;
@@ -25,9 +22,9 @@
         justify-content: center;
         font-variant: small-caps;
         font-size: 20px;
-        background: linear-gradient(-45deg, $sea_green_1, $blue_3, $blue_4, $gold_1);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
+        background: linear-gradient(-45deg, $sea_green_1, $blue_3, $blue_4);
+        //background-size: 400% 400%;
+        //animation: gradientBG 15s ease infinite;
 
         video {
             //display: none;
@@ -36,7 +33,7 @@
             left: 0px;
             z-index: 1;
 
-            -webkit-transform: translateZ(0);
+            /* -webkit-transform: translateZ(0);
             -moz-transform: translateZ(0);
             -ms-transform: translateZ(0);
             -o-transform: translateZ(0);
@@ -45,7 +42,7 @@
             -moz-transition: all 1s;
             -webkit-transition: all 1s;
             -o-transition: all 1s;
-            transition: all 1s ;
+            transition: all 1s ; */
         }
 
         span {

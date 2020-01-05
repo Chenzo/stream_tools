@@ -25,12 +25,11 @@ class MicCircle extends React.Component {
         this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
         this.bufferLength = this.analyser.frequencyBinCount;
         this.source = this.audioContext.createMediaStreamSource(this.props.audio);
-        //this.micDelay.connect(this.analyser);
-        this.micDelay.delayTime.value = 1;
+        this.micDelay.delayTime.value = this.props.audioDelayTime; //somewhere around 1
         this.source.connect(this.micDelay);
         this.micDelay.connect(this.analyser);
         this.rafId = requestAnimationFrame(this.tick);
-        console.log(this.bufferLength);
+        //console.log(this.bufferLength);
     }
 
     tick() {
@@ -43,6 +42,7 @@ class MicCircle extends React.Component {
         cancelAnimationFrame(this.rafId);
         this.analyser.disconnect();
         this.source.disconnect();
+        console.log("UN MOUNTED");
     }
     
     render() {

@@ -2,7 +2,7 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-
+/* 
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -24,4 +24,4 @@ window.addEventListener('beforeinstallprompt', (event) => {
 
   if (window.matchMedia('(display-mode: standalone)').matches) {
     window.resizeTo(1400,900);
-  }
+  } */

@@ -16,6 +16,7 @@ class MicCircle extends React.Component {
     componentDidMount() {
         this.audioContext = new (window.AudioContext ||
            window.webkitAudioContext)();
+        this.micDelay = this.audioContext.createDelay(100);
         this.analyser = this.audioContext.createAnalyser();
         this.analyser.minDecibels = -90;
         this.analyser.maxDecibels = -10;
@@ -24,7 +25,10 @@ class MicCircle extends React.Component {
         this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
         this.bufferLength = this.analyser.frequencyBinCount;
         this.source = this.audioContext.createMediaStreamSource(this.props.audio);
-        this.source.connect(this.analyser);
+        //this.micDelay.connect(this.analyser);
+        this.micDelay.delayTime.value = 1;
+        this.source.connect(this.micDelay);
+        this.micDelay.connect(this.analyser);
         this.rafId = requestAnimationFrame(this.tick);
         console.log(this.bufferLength);
     }

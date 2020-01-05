@@ -66,9 +66,9 @@ module.exports = {
       { from: 'public/fonts', to: 'fonts' },
       { from: 'public/images', to: 'images' },
       { from: 'public/video', to: 'video' },
-      { from: 'public/js', to: 'js' },
+      { from: 'public/js', to: 'js' }/* ,
       { from: 'public/manifest.json', to: 'manifest.json' },
-      { from: 'public/service-worker.js', to: 'service-worker.js' }
+      { from: 'public/service-worker.js', to: 'service-worker.js' } */
     ])
   ]
 };
